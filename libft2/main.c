@@ -32,8 +32,8 @@
 int main()
 {
 	printf ("ft_strncmp \n" );
-	printf ("ft %d | ", ft_strncmp("ta1", "ta9 ", 3));
-	printf ("noft %d \n" , strncmp("ta1", "ta9 " , 3));
+	printf ("ft %d | ", ft_strncmp("test\200", "test\0", 6));
+	printf ("noft %d \n" , strncmp("test\200", "test\0", 6));
 
 	printf ("ft_strlen \n" );
 	printf ("%ld \n", ft_strlen("123456789"));
@@ -127,10 +127,10 @@ int main()
 	printf("noft %s\n", d);
 
 	printf ("ft_atoi \n" );
-    printf("ft %d ", ft_atoi(" hello256"));
-    printf(" %d\n", ft_atoi("+11000"));
-    printf("no ft %d", atoi(" hello256"));
-    printf(" %d\n", atoi("+11000"));
+    printf("ft %d ", ft_atoi(""));
+    printf(" %d\n", ft_atoi("\e475"));
+    printf("no ft %d", atoi(""));
+    printf(" %d\n", atoi("\e475"));
 
 	char sub[] = "tripo";
 	printf ("ft_substr \n" );
@@ -152,12 +152,23 @@ int main()
 	char *result = ft_strmapi(mapi, my_func);
 	printf("The result is %s\n", result);
 
+	void my_func2(unsigned int i,char *stri)
+	{
+		i=0;
+		stri[i] = stri[i] - 32;
+		i++;
+	}
+	char stri[10] = "hey";
+	printf("The result is %s\n", stri);
+	ft_striteri(stri, my_func2);
+	printf("The result is %s\n", stri);
+
 
 	char *s1 ="123 acb";
 //	char *sx = "Hello \t  Please\n Trim me !";
 	printf("%s\n", ft_strtrim(s1, "acb"));
 
-	int itoa = -2147483648 ;
+	int itoa = -1005 ;
 	printf("The result is %s\n", ft_itoa(itoa));
 
 	int nbr = -2147483648 ;
@@ -177,5 +188,8 @@ int main()
 	    printf("[%s]\n", arr[i]);
 	    ++i;
 	}
+
+
+
 	return (0);	
 }

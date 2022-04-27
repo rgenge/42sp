@@ -6,7 +6,7 @@
 /*   By: acosta-a <chaves_87@hotmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 02:49:20 by acosta-a          #+#    #+#             */
-/*   Updated: 2022/04/18 00:38:58 by acosta-a         ###   ########.fr       */
+/*   Updated: 2022/04/25 02:13:24 by acosta-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	int	ft_intlen(long i)
 		i = i * (-1);
 		len++;
 	}
-	while (i > 10)
+	while (i >= 10)
 	{
 		i = i / 10;
 		len++;
@@ -51,7 +51,8 @@ char	*ft_itoa(int n)
 
 	n2 = n;
 	i = ft_intlen(n2);
-	str = malloc((i + 1) * sizeof(char));
+	if (n2 != 0)
+		str = malloc((i + 1) * sizeof(char));
 	if (n2 == 0)
 		return (ft_nzero(n2));
 	if (n2 < 0)

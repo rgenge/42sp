@@ -6,7 +6,7 @@
 /*   By: acosta-a <chaves_87@hotmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 19:31:15 by acosta-a          #+#    #+#             */
-/*   Updated: 2022/04/07 14:49:47 by acosta-a         ###   ########.fr       */
+/*   Updated: 2022/04/25 02:48:57 by acosta-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t size)
 		s2++;
 		i++;
 	}
-	return (*s1 - *s2);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

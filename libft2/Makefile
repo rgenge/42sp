@@ -6,7 +6,7 @@
 #    By: acosta-a <chaves_87@hotmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 02:03:37 by acosta-a          #+#    #+#              #
-#    Updated: 2022/04/20 04:00:38 by acosta-a         ###   ########.fr        #
+#    Updated: 2022/04/26 04:07:17 by acosta-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@
 NAME = libft.a
 
 # Compilation #
-CC = gcc
+CC = cc
 FLAG = -Wall -Wextra -Werror
 OPTCC=  -I. -c
+RM = rm -f
 
 # includes #
 
@@ -30,20 +31,33 @@ SRC = ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
 	  ft_strtrim.c ft_putstr_fd.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 	  ft_itoa.c ft_split.c \
 	  ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_isalnum.c\
-	  ft_toupper.c ft_tolower.c\ 
+	  ft_toupper.c ft_tolower.c 
+#BONUS #
+BONUS = ft_lstnew.c	ft_lstadd_front.c ft_lstsize.c	\
+		ft_lstlast.c 
 
 SRC.O = $(SRC:.c=.o)
+BONUS.O = $(BONUS:.c=.o)
  
-all: $(NAME)
 $(NAME): $(SRC.O) $(HEADER)
 	$(CC) $(FLAG) $(OPTCC) $(SRC)
-	ar rc $(NAME) $(SRC.O)
+	ar rcs $(NAME) $(SRC.O)
+
+$(BONUS.O):
+	$(CC) $(FLAG) $(OPTCC) $(BONUS)
+	
+all: $(NAME)
+
+bonus: $(NAME) $(BONUS.O)
+	ar rcs $(NAME) $(BONUS.O)
 
 clean:
-	rm -f $(SRC.O)
+	$(RM) $(SRC.O) $(BONUS.O)
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
+
+rebonus : fclean bonus
 
 .PHONY: all clean fclean re bonus rebonus
